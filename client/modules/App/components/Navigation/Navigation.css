@@ -1,0 +1,8 @@
+.navigation {
+    list-style: none;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: white;
+}
