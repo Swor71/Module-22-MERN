@@ -1,4 +1,7 @@
-import { ADD_POST, ADD_POSTS, DELETE_POST } from './PostActions';
+import { ADD_POST,
+          ADD_POSTS,
+          DELETE_POST,
+          EDIT_POST } from './PostActions';
 
 // Initial State
 const initialState = { data: [] };
@@ -19,7 +22,10 @@ const PostReducer = (state = initialState, action) => {
       return {
         data: state.data.filter(post => post.cuid !== action.cuid),
       };
-
+    case EDIT_POST:
+      return {
+        data: state.data.map(post => { return post.cuid === action.cuid ? Object.assign({}, post, action.post) : post }),
+      };
     default:
       return state;
   }
