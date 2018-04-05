@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
+import Buttons from '../Buttons/Buttons';
 
 // Import Style
 import styles from './PostListItem.css';
@@ -16,6 +17,7 @@ function PostListItem(props) {
       <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>
       <p className={styles['post-desc']}>{props.post.content}</p>
       <p className={styles['post-action']}><a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a></p>
+      <Buttons likes={props.post.likes} dislikes={props.post.dislikes} thumbsUp={props.thumbsUp} thumbsDown={props.thumbsDown} />
       <hr className={styles.divider} />
     </div>
   );
@@ -28,8 +30,12 @@ PostListItem.propTypes = {
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
+    dislikes: PropTypes.number.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
+  thumbsUp: PropTypes.func.isRequired,
+  thumbsDown: PropTypes.func.isRequired,
 };
 
 export default PostListItem;

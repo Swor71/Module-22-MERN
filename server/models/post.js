@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   name: { type: 'String', required: true },
   title: { type: 'String', required: true },
+  likes: { type: Number, required: true },
+  dislikes: { type: Number, required: true },
   content: { type: 'String', required: true },
   slug: { type: 'String', required: true },
   cuid: { type: 'String', required: true },

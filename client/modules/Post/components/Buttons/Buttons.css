@@ -1,0 +1,28 @@
+.buttons {
+
+}
+
+.btn {
+    margin: 5px;
+    padding: 2px 4px;
+    border-radius: 50px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #D6D6D6;
+    background: transparent;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+    outline: none;
+}
+
+.btnPlus {
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
+.btnMinus {
+   color: firebrick;
+   border-color: firebrick;
+}

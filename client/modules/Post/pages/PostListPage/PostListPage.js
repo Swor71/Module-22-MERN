@@ -6,7 +6,7 @@ import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
 
 // Import Actions
-import { addPostRequest, fetchPosts, deletePostRequest } from '../../PostActions';
+import { addPostRequest, fetchPosts, deletePostRequest, thumbsUpRequest, thumbsDownRequest } from '../../PostActions';
 import { toggleAddPost } from '../../../App/AppActions';
 
 // Import Selectors
@@ -24,16 +24,24 @@ class PostListPage extends Component {
     }
   };
 
-  handleAddPost = (name, title, content) => {
+  handleAddPost = (name, title, content, likes, dislikes) => {
     this.props.dispatch(toggleAddPost());
-    this.props.dispatch(addPostRequest({ name, title, content }));
+    this.props.dispatch(addPostRequest({ name, title, content, likes, dislikes }));
   };
+
+  handleLikes = (cuid, likes) => {
+    this.props.dispatch(thumbsUpRequest(cuid, likes + 1));
+  }
+
+  handleDislikes = (cuid, dislikes) => {
+    this.props.dispatch(thumbsDownRequest(cuid, dislikes + 1));
+  }
 
   render() {
     return (
       <div>
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
-        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
+        <PostList handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>
     );
   }

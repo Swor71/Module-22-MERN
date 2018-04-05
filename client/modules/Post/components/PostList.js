@@ -12,6 +12,10 @@ function PostList(props) {
             post={post}
             key={post.cuid}
             onDelete={() => props.handleDeletePost(post.cuid)}
+            likes={post.likes}
+            dislikes={post.dislikes}
+            thumbsUp={() => props.handleLikes(post.cuid, post.likes)}
+            thumbsDown={() => props.handleDislikes(post.cuid, post.dislikes)}
           />
         ))
       }
@@ -28,6 +32,8 @@ PostList.propTypes = {
     cuid: PropTypes.string.isRequired,
   })).isRequired,
   handleDeletePost: PropTypes.func.isRequired,
+  handleLikes: PropTypes.func.isRequired,
+  handleDislikes: PropTypes.func.isRequired,
 };
 
 export default PostList;

@@ -21,6 +21,7 @@ export class PostDetailPage extends Component {
       name: this.props.post.name,
       title: this.props.post.title,
       content: this.props.post.content,
+      voteCounter: this.props.post.voteCounter,
     };
   }
 
@@ -96,6 +97,7 @@ PostDetailPage.propTypes = {
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
+    voteCounter: PropTypes.number.isRequired,
   }).isRequired,
   intl: PropTypes.shape({
     messages: PropTypes.shape({

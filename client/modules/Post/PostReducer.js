@@ -1,7 +1,9 @@
 import { ADD_POST,
           ADD_POSTS,
           DELETE_POST,
-          EDIT_POST } from './PostActions';
+          EDIT_POST,
+          THUMBS_UP,
+          THUMBS_DOWN } from './PostActions';
 
 // Initial State
 const initialState = { data: [] };
@@ -25,6 +27,14 @@ const PostReducer = (state = initialState, action) => {
     case EDIT_POST:
       return {
         data: state.data.map(post => { return post.cuid === action.cuid ? Object.assign({}, post, action.post) : post }),
+      };
+    case THUMBS_UP:
+      return {
+        data: state.data.map(post => { return post.cuid === action.cuid ? Object.assign({}, post, { likes: action.likes }) : post }),
+      };
+    case THUMBS_DOWN:
+      return {
+        data: state.data.map(post => { return post.cuid === action.cuid ? Object.assign({}, post, { dislikes: action.dislikes }) : post }),
       };
     default:
       return state;
